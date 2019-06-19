@@ -57,6 +57,8 @@ int fib(int n){
 }
 void task3(void)
 {
+	printf("[Task3] Start in unprivileged thread mode.\r\n\n");
+	printf("[Task3] Control: 0x%x \r\n", (unsigned int)read_ctrl());
 	int input=2147483647, i;
     while(1){
         for(i=0; i<=input; i++){
