@@ -44,31 +44,27 @@ void task2(void)
 	blink(LED_ORANGE); //should not return
 }
 
-int fib(int n){
- 
-    if(n==0)
-        return 0;
- 
-    if(n==1)
-        return 1;
- 
-    return (fib(n-1)+fib(n-2));
- 
-}
+
 void task3(void)
 {
 	printf("[Task3] Start in unprivileged thread mode.\r\n\n");
-	printf("[Task3] Control: 0x%x \r\n", (unsigned int)read_ctrl());
-	int input=2147483647, i;
-    while(1){
-        for(i=0; i<=input; i++){
-            printf("%d  ", fib(i));
-			//int t = 0xFFFF;
-			//while(t--);
+	int i,f = 0, n1 = 1, n = 0;
+	
+	while(1)
+	{
+		printf("[Task3] next = %d.\r\n\n", n);
+		n = f + n1;
+		f = n1;
+		n1 = n;
+		for (i = 0; i < 2147483647 ; i++)
+			;
+		if (n <= 0)
+		{
+			f = 0;
+			n1 = 1;
+			n = 0;
 		}
- 
-    }
-	waite();
+	}
 }
 
 int main(void)
